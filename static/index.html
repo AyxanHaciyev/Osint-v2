@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KƏŞF — Rəqəmsal İz Kəşfiyyat Sistemi</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡</text></svg>">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="glass-panel header">
+            <div class="logo">
+                <span class="glitch" data-text="KƏŞF">KƏŞF</span>
+                <span class="subtitle">Kibernetik Əlaqə və Şəbəkə Forensikası</span>
+            </div>
+            <div class="opsec-status" id="opsecStatus">
+                <span class="status-indicator"></span>
+                <span class="status-text">Mullvad yoxlanılır...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-grid">
+            
+            <!-- Left Panel: Target Input -->
+            <section class="glass-panel target-form">
+                <h2><span class="icon">🎯</span> Hədəf Məlumatları</h2>
+                <form id="targetForm">
+                    <div class="input-group">
+                        <label>Ad</label>
+                        <input type="text" id="firstName" placeholder="Məs: Əli" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Soyad</label>
+                        <input type="text" id="lastName" placeholder="Məs: Məmmədov" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Ata adı (istəyə bağlı)</label>
+                        <input type="text" id="middleName" placeholder="Məs: Həsən oğlu">
+                    </div>
+                    <div class="input-group">
+                        <label>Username (istəyə bağlı)</label>
+                        <input type="text" id="username" placeholder="Məs: alim123">
+                    </div>
+                    <div class="input-group">
+                        <label>E-poçt (istəyə bağlı)</label>
+                        <input type="email" id="email" placeholder="Məs: ali@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label>Telefon (istəyə bağlı)</label>
+                        <input type="text" id="phone" placeholder="Məs: +994501234567">
+                    </div>
+                    <div class="input-group">
+                        <label>Yaş (istəyə bağlı)</label>
+                        <input type="number" id="age" placeholder="Məs: 25">
+                    </div>
+                    <div class="input-group">
+                        <label>Doğulduğu ay (istəyə bağlı)</label>
+                        <input type="text" id="birthMonth" placeholder="Məs: Oktyabr və ya 10">
+                    </div>
+                    <div class="input-group">
+                        <label>Məşğul olduğu iş / Peşə (istəyə bağlı)</label>
+                        <input type="text" id="profession" placeholder="Məs: Backend Developer, Satıcı">
+                    </div>
+                    <div class="input-group">
+                        <label>Hobilər və Maraqlar (istəyə bağlı)</label>
+                        <input type="text" id="hobbies" placeholder="Məs: Şahmat, Maşınlar, Rəsm">
+                    </div>
+                    <div class="input-group">
+                        <label>Şəhər</label>
+                        <input type="text" id="city" placeholder="Məs: Bakı">
+                    </div>
+                    <div class="input-group">
+                        <label>İş / Universitet</label>
+                        <input type="text" id="employer" placeholder="Məs: SOCAR / BDU">
+                    </div>
+
+                    <button type="submit" id="startBtn" class="btn-primary glow-effect" disabled>
+                        Axtarışa Başla <span class="lock-icon">🔒</span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Right Panel: Terminal & Results -->
+            <section class="right-panel">
+                
+                <!-- Terminal Output -->
+                <div class="glass-panel terminal-wrapper">
+                    <div class="terminal-header">
+                        <span>Terminal Çıxışı</span>
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminalLog">
+                        <!-- Logs will appear here -->
+                        <div class="log-line info">Sistem hazırdır. Əmrlərinizi gözləyir...</div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="glass-panel results-wrapper">
+                    <h2><span class="icon">📊</span> Nəticələr</h2>
+                    <div class="results-stats">
+                        <div class="stat-box">
+                            <span class="stat-label">Ümumi</span>
+                            <span class="stat-value" id="totalResults">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Sənədlər</span>
+                            <span class="stat-value text-yellow" id="totalDocs">0</span>
+                        </div>
+                    </div>
+                    <ul class="results-list" id="resultsList">
+                        <!-- Results will be appended here -->
+                    </ul>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

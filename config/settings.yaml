@@ -1,0 +1,144 @@
+# KƏŞF OSINT Framework — Configuration
+# ============================================
+# All settings for VPN, browser, throttling, dorking, documents, intelligence, and session.
+
+vpn:
+  # Mullvad VPN verification endpoint
+  check_url: "https://am.i.mullvad.net/json"
+  # Expected VPN tunnel interface names
+  expected_interfaces:
+    - tun0
+    - wg0
+    - Mullvad
+  # Enable DNS leak detection before queries
+  dns_leak_check: true
+  # Abort all operations if VPN is not detected
+  kill_switch: true
+  # Maximum retries for VPN verification
+  max_retries: 3
+  # Seconds between VPN check retries
+  retry_delay: 5
+
+browser:
+  # Path to Brave Browser executable
+  brave_path: "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+  # Run browser in headless mode (no visible window)
+  headless: true
+  # Enable stealth mode to avoid automation detection
+  stealth_mode: true
+  # SOCKS5 proxy through Mullvad WireGuard
+  proxy:
+    server: "socks5://10.64.0.1:1080"
+    enabled: true
+  # Viewport dimensions to match common screen resolutions
+  viewport:
+    width: 1920
+    height: 1080
+  # Default navigation timeout in milliseconds
+  timeout_ms: 30000
+  # Locale and timezone spoofing
+  locale: "en-US"
+  timezone: "America/New_York"
+  # Block known tracking/fingerprinting domains
+  block_trackers: true
+  # Disable WebRTC to prevent IP leaks
+  disable_webrtc: true
+
+throttle:
+  # Minimum base delay between actions (seconds)
+  base_delay_min: 3
+  # Maximum base delay between actions (seconds)
+  base_delay_max: 8
+  # Cooldown between search queries (seconds)
+  query_cooldown: 15
+  # Maximum queries allowed per session
+  max_queries_per_session: 200
+  # Number of rapid queries before triggering burst cooldown
+  burst_limit: 5
+  # Extended cooldown after burst limit is reached (seconds)
+  burst_cooldown: 30
+  # Add random jitter to all delays (0.0 - 1.0 multiplier)
+  jitter_factor: 0.3
+  # Exponential backoff on rate-limit detection
+  backoff_multiplier: 2.0
+  # Maximum backoff ceiling (seconds)
+  max_backoff: 120
+
+dorking:
+  # Maximum results to collect per dork query
+  max_results_per_query: 20
+  # Search engines to rotate through
+  search_engines:
+    - google
+    - duckduckgo
+    - bing
+  # Enable safe search mode
+  safe_mode: true
+  # Rotate engines after N queries
+  engine_rotation_interval: 10
+  # Maximum pages to paginate per query
+  max_pages_per_query: 3
+  # Country-specific search (ISO 3166-1 alpha-2)
+  default_country: "AZ"
+  # Language preference for search results
+  default_language: "az"
+
+documents:
+  # Directory for sandboxed document analysis
+  sandbox_dir: "./sandbox"
+  # Allowed document types for download/analysis
+  allowed_types:
+    - pdf
+    - docx
+    - xlsx
+  # Automatically download discovered documents
+  auto_download: false
+  # Maximum file size allowed for download (MB)
+  max_file_size_mb: 50
+  # Remove sandbox contents when session ends
+  clean_on_exit: true
+  # Scan documents for malware indicators
+  malware_scan: true
+  # Extract metadata from documents
+  extract_metadata: true
+  # Maximum concurrent document downloads
+  max_concurrent_downloads: 3
+
+intelligence:
+  # Maximum recursion depth for pivoting
+  max_depth: 3
+  # Maximum pivot points to explore per depth level
+  max_pivots_per_level: 5
+  # Minimum confidence score required to pivot on a data point
+  min_confidence_to_pivot: 0.6
+  # Confidence threshold for automatic acceptance
+  min_confidence_auto_accept: 0.8
+  # Confidence threshold for automatic rejection
+  min_confidence_auto_reject: 0.4
+  # Enable graph-based deduplication
+  deduplication: true
+  # Minimum similarity ratio for deduplication (0.0 - 1.0)
+  dedup_threshold: 0.85
+  # Weight multiplier for cross-source corroboration
+  corroboration_weight: 1.5
+  # Enable entity relationship extraction
+  entity_extraction: true
+
+session:
+  # Maximum session duration (hours)
+  timeout_hours: 2
+  # Directory for session log files
+  log_dir: "./logs"
+  # Directory for generated intelligence reports
+  report_dir: "./reports"
+  # Auto-save session state interval (minutes)
+  autosave_interval: 5
+  # Maximum number of sessions to retain
+  max_retained_sessions: 20
+  # Report output formats
+  report_formats:
+    - pdf
+    - json
+    - html
+  # Enable session encryption at rest
+  encrypt_sessions: false
